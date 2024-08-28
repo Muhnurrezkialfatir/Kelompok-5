@@ -1,6 +1,6 @@
 # Praktikum 5
 ## Tabel Pegawai
-![](Kelompok%205/aset/pegawai.png)
+![](Kelompok%205/asett/pegawai.png)
 
 ---
 ## 1
@@ -16,7 +16,7 @@ FROM pegawai;
 
 ### Hasil
 
-![](Kelompok%205/aset/1.png)
+![](Kelompok%205/asett/1.png)
 
 ### Analisis 
 
@@ -43,7 +43,7 @@ WHERE NoCab = 'C102';
 
 ### Hasil
 
-![](Kelompok%205/aset/2.png)
+![](Kelompok%205/asett/2.png)
 
 ### Analisis 
 
@@ -71,7 +71,7 @@ GROUP BY NoCab;
 
 ### Hasil
 
-![](Kelompok%205/aset/3.png)
+![](Kelompok%205/asett/3.png)
 
 ### Analisis 
 
@@ -99,7 +99,7 @@ GROUP BY NoCab HAVING COUNT(NIP) >= 3;
 
 ### Hasil
 
-![](Kelompok%205/aset/4.png)
+![](Kelompok%205/asett/4.png)
 
 ### Analisis 
 
@@ -127,7 +127,7 @@ FROM pegawai;
 
 ### Hasil
 
-![](Kelompok%205/aset/5.png)
+![](Kelompok%205/asett/5.png)
 
 ### Analisis
 - `SELECT` = Untuk memilih kolom mana saja yang dipilih untuk dijumlahkan. 
@@ -148,7 +148,7 @@ WHERE Jabatan = 'Manajer';
 
 ### Hasil
 
-![](Kelompok%205/aset/6.png)
+![](Kelompok%205/asett/6.png)
 
 ### Analisis
 - `Select`= untuk memiliki kolom mana saja yang dipilih untuk digunakan.
@@ -171,7 +171,7 @@ GROUP BY NoCab;
 
 ### Hasil
 
-![](Kelompok%205/aset/7.png)
+![](Kelompok%205/asett/7.png)
 
 ### Analisis
 - `SELECT`= untuk memilih kolom mana saja yang dipilih untuk ditampilkan atau dijumlahkan.
@@ -194,7 +194,7 @@ GROUP BY NoCab HAVING SUM(Gaji) >= 8000000;
 
 ### Hasil
 
-![](Kelompok%205/aset/8.png)
+![](Kelompok%205/asett/8.png)
 
 ### Analisis
 - `SELECT` = untuk memilih kolom mana saja yang dipilih untuk di tampilkan atau di jumlah.
@@ -220,7 +220,7 @@ FROM pegawai;
 
 ### Hasil
 
-![](Kelompok%205/aset/9.png)
+![](Kelompok%205/asett/9.png)
 
 ### Analisis
 - `SELECT` = untuk memilih kolom mana data Yang dipilih untuk ditampilkan.
@@ -243,7 +243,7 @@ WHERE Jabatan = "Manajer";
 
 ### Hasil
 
-![](Kelompok%205/aset/10.png)
+![](Kelompok%205/asett/10.png)
 
 ### Analisis
 - `SELECT` = untuk memilih kolom mana saja yang dipilih untuk ditampilkan.
@@ -267,7 +267,7 @@ GROUP BY NoCab;
 
 ### Hasil
 
-![](Kelompok%205/aset/11.png)
+![](Kelompok%205/asett/11.png)
 
 ### Analisis 
 - `SELECT` = untuk memilih kolom mana saja yang dipilih untuk ditampilkan/dihitung.
@@ -291,7 +291,7 @@ GROUP BY NoCab HAVING NoCab = 'C101' OR NoCab = 'C102';
 
 ### Hasil
 
-![](Kelompok%205/aset/12.png)
+![](Kelompok%205/asett/12.png)
 
 ### Analisis 
 - `SELECT` = untuk memilih kolom mana saja yang dipilih untuk ditampilkan/dihitung.
@@ -315,7 +315,7 @@ FROM pegawai;
 
 ### Hasil
 
-![](Kelompok%205/aset/13.png)
+![](Kelompok%205/asett/13.png)
 
 ### Analisis 
 - `SELECT` = untuk memilih kolom mana saja yang dipilih untuk ditampilkan/dihitung.
@@ -337,7 +337,7 @@ WHERE Jabatan = "Manajer";
 
 ### Hasil
 
-![](Kelompok%205/aset/14.png)
+![](Kelompok%205/asett/14.png)
 
 ### Analisis
 - `SELECT`= Untuk memilih kolom nama mana saja yang dipilih untuk ditampilkan l.
@@ -361,7 +361,7 @@ GROUP BY NoCab;
 
 ### Hasil
 
-![](Kelompok%205/aset/15.png)
+![](Kelompok%205/asett/15.png)
 
 ### Analisis
 - `SELECT`= Untuk memilih kolom nama mana saja yang dipilih untuk ditampilkan.
@@ -385,7 +385,7 @@ GROUP BY NoCab HAVING COUNT(NIP) >= 3;
 
 ### Hasil
 
-![](Kelompok%205/aset/16.png)
+![](Kelompok%205/asett/16.png)
 
 ### Analisis
 - `SELECT`= Untuk memilih kolom nama mana saja yang dipilih untuk ditampilkan.
@@ -412,7 +412,7 @@ FROM Pegawai;
 
 ### Hasil
 
-![](Kelompok%205/aset/17.png)
+![](Kelompok%205/asett/17.png)
 
 ### Penjelasan
 - `SELECT`= untuk memilih kolom mana saja yang dipilih untuk di tampilkan. 
@@ -442,7 +442,7 @@ GROUP BY NoCab HAVING SUM(Gaji) <= 2600000;
 
 ### Hasil
 
-![](Kelompok%205/aset/18.png)
+![](Kelompok%205/asett/18.png)
 
 ### Analisis
 - `SELECT`= untuk memilih kolom mana saja yang ingin digunakan. 
