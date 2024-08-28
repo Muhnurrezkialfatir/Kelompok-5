@@ -482,7 +482,7 @@ select warna,COUNT(id_mobil) AS Jumlah_Data_Mobil FROM data_mobil GROUP BY warna
 ```
 
 ### Hasil
-![](Asetdatabase/54.png)
+![](basis%20data%20kelas%2012/Asetdatabase/54.png)
 
 ### Analisis
 - Perintah `SELECT` digunakan untuk mengambil data dari database. Dalam konteks ini, data yang diambil adalah kolom `warna` dan hasil dari fungsi `COUNT(id_mobil)`.
@@ -508,7 +508,7 @@ select pemilik,COUNT(id_mobil) AS jumlah_mobil from data_mobil GROUP BY pemilik 
 ```
 
 ### Hasil
-![](Asetdatabase/55.png)
+![](basis%20data%20kelas%2012/Asetdatabase/55.png)
 ### Analisis
 - Perintah `SELECT` digunakan untuk mengambil data dari database. Dalam konteks ini, data yang diambil adalah kolom `pemilik` dan hasil dari fungsi `COUNT(id_mobil)`.
 - `pemilik` adalah salah satu kolom dalam tabel `data_mobil`. Kolom ini menyimpan informasi tentang pemilik mobil.
@@ -535,7 +535,7 @@ FROM data_mobil GROUP BY pemilik;
 ```
 
 ### Hasil
-![](Asetdatabase/56.png)
+![](basis%20data%20kelas%2012/Asetdatabase/56.png)
 ### Analisis
 - `SELECT` merupakan perintah SQL yang digunakan untuk memilih data dari database.
 - `pemilik` adalah nama kolom yang akan diambil dari tabel `data_mobil`.
@@ -558,7 +558,7 @@ select data 3,SUM(data 5) AS nama_sementara from nama_tabel GROUP BY data 3;
 select pemilik,SUM(harga_rental) AS jumlah_pendapatan from data_mobil GROUP BY pemilik;
 ```
 ### Hasil
-![](Asetdatabase/57.png)
+![](basis%20data%20kelas%2012/Asetdatabase/57.png)
 ### Analisis
 - **SELECT** merupakan perintah yang digunakan untuk memilih data dari database.
 - **pemilik** adalah nama kolom yang akan diambil dari tabel `data_mobil`.
@@ -581,7 +581,7 @@ select pemilik,SUM(harga_rental) AS jumlah_pemasukan from data_mobil GROUP BY pe
 ```
 
 ### Hasil
-![](Asetdatabase/58.png)
+![](basis%20data%20kelas%2012/Asetdatabase/58.png)
 ### Analisis
 - **SELECT** merupakan perintah yang digunakan untuk memilih data dari database.
 - **pemilik** adalah nama kolom yang akan diambil dari tabel `data_mobil`.
@@ -605,7 +605,7 @@ select pemilik,AVG(harga_rental) AS rata_pemasukam from data_mobil GROUP BY pemi
 ```
 
 ### Hasil
-![](Asetdatabase/59.png)
+![](basis%20data%20kelas%2012/Asetdatabase/59.png)
 ### Analisis
 - **SELECT** merupakan perintah yang digunakan untuk memilih data dari database.
 - **pemilik** adalah nama kolom yang akan diambil dari tabel `data_mobil`. Kolom ini menyimpan informasi tentang pemilik mobil.
@@ -626,7 +626,7 @@ select nama_data,MAX(nama_data) AS nama_sementara,MIN(nama_data) AS nama_sementa
 select pemilik,MAX(harga_rental) AS Pemasukan_Terbesar ,MIN(harga_rental) AS pemasukan_terkecil from data_mobil GROUP BY pemilik HAVING COUNT(harga_rental) > 1;
 ```
 ### Hasil
-![](Asetdatabase/53.png)
+![](basis%20data%20kelas%2012/Asetdatabase/53.png)
 
 ### Analisis
 - **SELECT** merupakan perintah yang digunakan untuk memilih data dari database.
