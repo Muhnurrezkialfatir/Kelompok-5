@@ -1,6 +1,6 @@
 # Praktikum 5
 ## Tabel Pegawai
-![](Kelompok%205/Gambar/pegawai.png)
+![](Gambar/Pegawai.png)
 
 ---
 ## 1
@@ -16,7 +16,7 @@ FROM pegawai;
 
 ### Hasil
 
-![](Kelompok%205/Gambar/1.png)
+![](Gambar/1.png)
 
 ### Analisis 
 
@@ -43,7 +43,7 @@ WHERE NoCab = 'C102';
 
 ### Hasil
 
-![](Kelompok%205/Gambar/2.png)
+![](Gambar/2.png)
 
 ### Analisis 
 
@@ -71,7 +71,7 @@ GROUP BY NoCab;
 
 ### Hasil
 
-![](Kelompok%205/Gambar/3.png)
+![](Gambar/3.png)
 
 ### Analisis 
 
@@ -99,7 +99,7 @@ GROUP BY NoCab HAVING COUNT(NIP) >= 3;
 
 ### Hasil
 
-![](Kelompok%205/Gambar/4.png)
+![](Gambar/4.png)
 
 ### Analisis 
 
@@ -127,7 +127,7 @@ FROM pegawai;
 
 ### Hasil
 
-![](Kelompok%205/Gambar/5.png)
+![](Gambar/5.png)
 
 ### Analisis
 - `SELECT` = Untuk memilih kolom mana saja yang dipilih untuk dijumlahkan. 
@@ -148,7 +148,7 @@ WHERE Jabatan = 'Manajer';
 
 ### Hasil
 
-![](Kelompok%205/Gambar/6.png)
+![](Gambar/6.png)
 
 ### Analisis
 - `Select`= untuk memiliki kolom mana saja yang dipilih untuk digunakan.
@@ -171,7 +171,7 @@ GROUP BY NoCab;
 
 ### Hasil
 
-![](Kelompok%205/Gambar/7.png)
+![](Gambar/7.png)
 
 ### Analisis
 - `SELECT`= untuk memilih kolom mana saja yang dipilih untuk ditampilkan atau dijumlahkan.
@@ -194,7 +194,7 @@ GROUP BY NoCab HAVING SUM(Gaji) >= 8000000;
 
 ### Hasil
 
-![](Kelompok%205/Gambar/8.png)
+![](Gambar/8.png)
 
 ### Analisis
 - `SELECT` = untuk memilih kolom mana saja yang dipilih untuk di tampilkan atau di jumlah.
@@ -220,7 +220,7 @@ FROM pegawai;
 
 ### Hasil
 
-![](Kelompok%205/Gambar/9.png)
+![](Gambar/9.png)
 
 ### Analisis
 - `SELECT` = untuk memilih kolom mana data Yang dipilih untuk ditampilkan.
@@ -243,7 +243,7 @@ WHERE Jabatan = "Manajer";
 
 ### Hasil
 
-![](Kelompok%205/Gambar/10.png)
+![](Gambar/10.png)
 
 ### Analisis
 - `SELECT` = untuk memilih kolom mana saja yang dipilih untuk ditampilkan.
@@ -267,7 +267,7 @@ GROUP BY NoCab;
 
 ### Hasil
 
-![](Kelompok%205/Gambar/11.png)
+![](Gambar/11.png)
 
 ### Analisis 
 - `SELECT` = untuk memilih kolom mana saja yang dipilih untuk ditampilkan/dihitung.
@@ -291,7 +291,7 @@ GROUP BY NoCab HAVING NoCab = 'C101' OR NoCab = 'C102';
 
 ### Hasil
 
-![](Kelompok%205/Gambar/12.png)
+![](Gambar/12.png)
 
 ### Analisis 
 - `SELECT` = untuk memilih kolom mana saja yang dipilih untuk ditampilkan/dihitung.
@@ -315,7 +315,7 @@ FROM pegawai;
 
 ### Hasil
 
-![](Kelompok%205/Gambar/13.png)
+![](Gambar/13.png)
 
 ### Analisis 
 - `SELECT` = untuk memilih kolom mana saja yang dipilih untuk ditampilkan/dihitung.
@@ -337,7 +337,7 @@ WHERE Jabatan = "Manajer";
 
 ### Hasil
 
-![](Kelompok%205/Gambar/14.png)
+![](Gambar/14.png)
 
 ### Analisis
 - `SELECT`= Untuk memilih kolom nama mana saja yang dipilih untuk ditampilkan l.
@@ -361,7 +361,7 @@ GROUP BY NoCab;
 
 ### Hasil
 
-![](Kelompok%205/Gambar/15.png)
+![](Gambar/15.png)
 
 ### Analisis
 - `SELECT`= Untuk memilih kolom nama mana saja yang dipilih untuk ditampilkan.
@@ -385,7 +385,7 @@ GROUP BY NoCab HAVING COUNT(NIP) >= 3;
 
 ### Hasil
 
-![](Kelompok%205/Gambar/16.png)
+![](Gambar/16.png)
 
 ### Analisis
 - `SELECT`= Untuk memilih kolom nama mana saja yang dipilih untuk ditampilkan.
@@ -412,7 +412,7 @@ FROM Pegawai;
 
 ### Hasil
 
-![](Kelompok%205/Gambar/17.png)
+![](Gambar/17.png)
 
 ### Penjelasan
 - `SELECT`= untuk memilih kolom mana saja yang dipilih untuk di tampilkan. 
@@ -442,7 +442,7 @@ GROUP BY NoCab HAVING SUM(Gaji) <= 2600000;
 
 ### Hasil
 
-![](Kelompok%205/Gambar/18.png)
+![](Gambar/18.png)
 
 ### Analisis
 - `SELECT`= untuk memilih kolom mana saja yang ingin digunakan. 
@@ -482,7 +482,7 @@ select warna,COUNT(id_mobil) AS Jumlah_Data_Mobil FROM data_mobil GROUP BY warna
 ```
 
 ### Hasil
-![](Kelompok%205/Gambar/19.png)
+![](Gambar/19.png)
 
 ### Analisis
 - Perintah `SELECT` digunakan untuk mengambil data dari database. Dalam konteks ini, data yang diambil adalah kolom `warna` dan hasil dari fungsi `COUNT(id_mobil)`.
@@ -508,7 +508,7 @@ select pemilik,COUNT(id_mobil) AS jumlah_mobil from data_mobil GROUP BY pemilik 
 ```
 
 ### Hasil
-![](Kelompok%205/Gambar/20.png)
+![](Gambar/20.png)
 ### Analisis
 - Perintah `SELECT` digunakan untuk mengambil data dari database. Dalam konteks ini, data yang diambil adalah kolom `pemilik` dan hasil dari fungsi `COUNT(id_mobil)`.
 - `pemilik` adalah salah satu kolom dalam tabel `data_mobil`. Kolom ini menyimpan informasi tentang pemilik mobil.
@@ -535,7 +535,7 @@ FROM data_mobil GROUP BY pemilik;
 ```
 
 ### Hasil
-![](Kelompok%205/Gambar/21.png)
+![](Gambar/21.png)
 ### Analisis
 - `SELECT` merupakan perintah SQL yang digunakan untuk memilih data dari database.
 - `pemilik` adalah nama kolom yang akan diambil dari tabel `data_mobil`.
@@ -558,7 +558,7 @@ select data 3,SUM(data 5) AS nama_sementara from nama_tabel GROUP BY data 3;
 select pemilik,SUM(harga_rental) AS jumlah_pendapatan from data_mobil GROUP BY pemilik;
 ```
 ### Hasil
-![](Kelompok%205/Gambar/22.png)
+![](Gambar/22.png)
 ### Analisis
 - **SELECT** merupakan perintah yang digunakan untuk memilih data dari database.
 - **pemilik** adalah nama kolom yang akan diambil dari tabel `data_mobil`.
@@ -581,7 +581,7 @@ select pemilik,SUM(harga_rental) AS jumlah_pemasukan from data_mobil GROUP BY pe
 ```
 
 ### Hasil
-![](Kelompok%205/Gambar/23.png)
+![](Gambar/23.png)
 ### Analisis
 - **SELECT** merupakan perintah yang digunakan untuk memilih data dari database.
 - **pemilik** adalah nama kolom yang akan diambil dari tabel `data_mobil`.
@@ -605,7 +605,7 @@ select pemilik,AVG(harga_rental) AS rata_pemasukam from data_mobil GROUP BY pemi
 ```
 
 ### Hasil
-![](Kelompok%205/Gambar/24.png)
+![](Gambar/24.png)
 ### Analisis
 - **SELECT** merupakan perintah yang digunakan untuk memilih data dari database.
 - **pemilik** adalah nama kolom yang akan diambil dari tabel `data_mobil`. Kolom ini menyimpan informasi tentang pemilik mobil.
@@ -626,7 +626,7 @@ select nama_data,MAX(nama_data) AS nama_sementara,MIN(nama_data) AS nama_sementa
 select pemilik,MAX(harga_rental) AS Pemasukan_Terbesar ,MIN(harga_rental) AS pemasukan_terkecil from data_mobil GROUP BY pemilik HAVING COUNT(harga_rental) > 1;
 ```
 ### Hasil
-![](Kelompok%205/Gambar/25.png)
+![](Gambar/25.png)
 
 ### Analisis
 - **SELECT** merupakan perintah yang digunakan untuk memilih data dari database.
