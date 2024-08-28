@@ -1,6 +1,6 @@
 # Praktikum 5
 ## Tabel Pegawai
-![](Gambar/Pegawai.png)
+![](Gambar/pegawai.png)
 
 ---
 ## 1
