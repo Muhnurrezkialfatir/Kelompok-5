@@ -1,3 +1,12 @@
+# TABEL KEAKTIFAN
+
+| No  | Nama   | Skor keaktifan | Peran             |
+| --- | ------ | -------------- | ----------------- |
+| 1   | Fatir  | 3              | Membuat 3 soal    |
+| 2   | Farhan | 3              | Membuat 2 Soal    |
+| 3   | Daud   | 3              | Membuat 2 Soal    |
+| 4   | Nabil  | 3              | Membuat 2 Soal    |
+| 5   | Afdal  | 0              | Tidak Mengerjakan |
 # Praktikum 5
 ## Tabel Pegawai
 ![](Gambar/pegawai.png)
@@ -428,7 +437,6 @@ FROM Pegawai;
 - `AS Gaji min`= untuk mengganti nama dari kolom hasil `min(gaji)` menjadi Gajimin untuk sementara. 
 - `FROM Pegawai`= untuk memilih tabel mana yang dipilih untuk ditampilkan pegawai adalah nama tabel yang dipilih. 
 - **Hasilnya** = Dihitung berapa `NIP`, dijumlahkan semua data pada kolom `Gaji`, Dihitung Rata-Rata dari kolom `Gaji`, Ditampilkan Nilai terbesar pada kolom `Gaji`, dan nilai terkecil dalam kolom `Gaji`. 
-
 ---
 ## 18
 ### Query
