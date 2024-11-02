@@ -1,12 +1,12 @@
 # TABEL KEAKTIFAN
 
-| No  | Nama   | Skor keaktifan | Peran             |
-| --- | ------ | -------------- | ----------------- |
-| 1   | Fatir  | 3              | Membuat 3 soal    |
-| 2   | Farhan | 3              | Membuat 2 Soal    |
-| 3   | Daud   | 3              | Membuat 2 Soal    |
-| 4   | Nabil  | 3              | Membuat 2 Soal    |
-| 5   | Afdal  | 0              | Tidak Mengerjakan |
+| No  | Nama   | Skor keaktifan | Peran                          |     |
+| --- | ------ | -------------- | ------------------------------ | --- |
+| 1   | Fatir  | 3              | Mencatat soal dan mencari soal |     |
+| 2   | Farhan | 3              | mencari soal                   |     |
+| 3   | Daud   | 3              | mencari soal                   |     |
+| 4   | Nabil  | 3              | mencari soal                   |     |
+| 5   | Afdal  | 0              | Tidak Mengerjakan              |     |
 # Praktikum 5
 ## Tabel Pegawai
 ![](Gambar/pegawai.png)
