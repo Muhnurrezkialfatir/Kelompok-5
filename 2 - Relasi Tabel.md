@@ -8,16 +8,16 @@
 | 5   | Afdal  | 0              | Tidak Mengerjakan |
  
  #  Tabel Employes
-![image](basis%20data%20kelas%2012/asett/3.png)
+![image](asett/3.png)
 # Tabel Order
-![image](basis%20data%20kelas%2012/asett/4.png)
+![image](asett/4.png)
 
 # Tabel Product
-![image](basis%20data%20kelas%2012/asett/1.png)
+![image](asett/1.png)
 # Tabel OrderDetails
-![image](basis%20data%20kelas%2012/asett/5.png)
+![image](asett/5.png)
 # Tabel Customer
-![image](basis%20data%20kelas%2012/asett/2.png)
+![image](asett/2.png)
 ___
 # Query 1
 ## Contoh Query
@@ -34,7 +34,7 @@ SELECT
       customers WHERE orders.CustID = customers.CustomerID;
 ```
 ## Hasil
-![image](basis%20data%20kelas%2012/asett/7.png)
+![image](asett/7.png)
 ## Analisis
 - `SELECT` untuk memilih kolom mana saja Yang ingin ditampilkan dan dari tabel mana kolom tersebut diambil.
 - `orders. Order ID` = orders merupakan nama tabel Yang ingin ditampilkan kolomnya Yaitu `orderID`. Jadi kolom `orderID` Pada tabel orders ingin ditampilkan. dalam `orders`, `OrderDate = `kolom order Date Pada tabel orders ingin ditampilkan.
@@ -53,7 +53,7 @@ SELECT o.OrderID,o.OrderDate,o.CustID,c.CompanyName,c.ContactName,c.City,c.Phone
 c.CustomerID AND c.City="London";
 ```
 ## Hasil
-![item](basis%20data%20kelas%2012/asett/9.png)
+![item](asett/9.png)
 ## analisis
 - `SELECT` untuk memilih kolom mana saja yang ingin ditampilkan dan dari tabel mana kolom tersebut diambil.
 - `o.orderID` o merupakan singkatan dari tabel orders, kolom orderID merupakan kolom dari tabel orders yang dipilih untuk ditampilakan.
@@ -78,7 +78,7 @@ SELECT o.OrderID, o.OrderDate, c.CompanyName,
      WHERE o.CustID = c.CustomerID AND o.EmpID = e.EmpID;
 ```
 ## Hasil
-![image](basis%20data%20kelas%2012/asett/8.png)
+![image](asett/8.png)
 ## Analisis
 - `SELECT` untuk memilih kolom mana saja yang ingin ditampilkan dari tabel mana kolom tersebut diambil.
 - `o.orderID,o.orderDate` kolom orderID dan orderDate dari tabel `o`(orders) dipilih untuk ditampilkan.
@@ -100,7 +100,7 @@ SELECT o.OrderID, o.OrderDate, c.CompanyName,
      e.FirstName = "Margaret";
 ```
 ## Hasil
-![image](basis%20data%20kelas%2012/asett/12.png)
+![image](asett/12.png)
 ## Analisis
 - `SELECT` untuk memilih kolom mana saja yang ingin ditampilkan dari tabel mana kolom tersebut diambil.
 - `o.orderID,o.orderDate` kolom orderID dan orderDate dari tabel `o`(orders) dipilih untuk ditampilkan.
@@ -124,7 +124,7 @@ SELECT o.OrderID, o.OrderDate, c.CompanyName,
      AND P.productID = od.ProductID ORDER BY c.CustomerID;
 ```
 ## Hasil
-![image](basis%20data%20kelas%2012/asett/10.png)
+![image](asett/10.png)
 ## Analisis
 1. ` Select`= untuk memili kolom mana saja yang ingin di tampilkan dan dari tabel         mana kolom tersebut diambil
 2. `o.orderID, o.orderdate` =kolom orderID dan orderdate dari tabel o (orders) dipilih untuk di tampilkan
@@ -144,7 +144,7 @@ SELECT c.CustomerID, c.CompanyName, o.OrderID AS OrdID,
      WHERE c.CustomerID = o.CustID AND o.OrderID = od.OrderID AND p.ProductID = od.ProductID AND e.EmpID ORDER BY o.OrderID;
 ```
 ## Hasil
-![image](asett/.png)
+![image](asett/20.png)
 ## Analisis
 1. `select` = untuk memilih kolom mana saja yang ingin ditampilkan  dan dari tabel mana kolom tersebut diambil.
 2. `c.customerID ,  c.companyname` = kolom customerID  dan companyname dari tabel c (customers) dipilih untuk ditampilkan.
@@ -168,9 +168,9 @@ CREATE VIEW CusrOrderIDmp
      WHERE c.CustomerID = o.CustID AND o.EmpID = e.EmpID;
 ```
 ## Hasil
-![image](basis%20data%20kelas%2012/asett/13.png)
-![image](basis%20data%20kelas%2012/asett/15.png)
-![image](basis%20data%20kelas%2012/asett/14.png)
+![image](asett/13.png)
+![image](asett/15.png)
+![image](asett/14.png)
 ## Analisis
 1. `SELECT` = untuk memilih kolom mana saja yang ingin ditampilkan dan digabungkan serta dari tabel mana kolom tersebut dipilih
 2. `c. customerID, C. companyName` = kolom customerID dan company Name dari tabel c(customers) dipilih untuk ditampilkan.
@@ -199,9 +199,9 @@ CREATE VIEW odProducts
      WHERE p.ProductID = od.ProductID;
 ```
 ## Hasil
-![iamge](basis%20data%20kelas%2012/asett/16.png)
+![iamge](asett/16.png)
 
-![iamge](basis%20data%20kelas%2012/asett/17.png)
+![iamge](asett/17.png)
 ## Analisis
 - `CREATE VIEW odproduct`: Untuk membuat tabel virtual dengan nama odproducts.
 - `AS SELECT`: Untuk memilih kolom-kolom mana saja yang ingin dipilih untuk dimasukkan ke tabel virtual.
@@ -220,7 +220,7 @@ SELECT c.CustomerID, c.CompanyName, o.OrderID, od.ProductID, ROUND(od.UnitPrice,
      ORDER BY  c.CustomerID;
 ```
 ## Hasil
-![image](basis%20data%20kelas%2012/asett/18.png)
+![image](asett/18.png)
 ## Analisis
 - `SELECT`: Untuk memilih kolom mana saja yang ingin ditampilkan dan dihitung.
 - `c.customerID, c.companyName`: Kolom costumerID dan companyName dari tabel c(customers) dipilih untuk ditampilkan.
@@ -254,7 +254,7 @@ SELECT
          c.CustomerID;
 ```
 ## Hasil
-![image](basis%20data%20kelas%2012/asett/19.png)
+![image](asett/19.png)
 ## Analisis
 - `SELECT`: Untuk memilih kolom mana saja yang ingin ditampilkan dan dibulatkan.
 - `C.customerID, C.companyName`: Kolom customeID dan companyName dari tabel c(customers) dipilih untuk ditampilkan.
