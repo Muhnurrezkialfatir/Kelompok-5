@@ -1,4 +1,64 @@
 # Ujian
+
+## Tabel Keaktifan
+| No  | Nama   | Skor keaktifan | Peran                                 |
+| --- | ------ | -------------- | ------------------------------------- |
+| 1   | Fatir  | 3              | Mengerjakan Materi dan Mencari Materi |
+| 2   | Farhan | 3              | Mencari Materi                        |
+| 3   | Daud   | 3              | Mencari Materi                        |
+| 4   | Nabil  | 3              | Mencari Materi                        |
+| 5   | Afdal  | 0              | Tidak Mengerjakan                     |
+
+## Soal 
+1. Setiap kelompok merancang database di MySQL dari hasil perencanaan ERD-nya masing-masing. Di dalam database tersebut wajib menjadikan tabel berelasi, dengan menambah foreign key. 
+2. Selanjutnya tampilkan datanya secara kontekstual dengan menggunakan query relasi, group by, dan having secara bersamaan dalam satu query. Buatlah minimal sebanyak 2 contoh. 
+3. Sertakan pula penjelasan dan analisis kalian pada soal nomor 1 dan 2.
+
+## Jawab
+
+## Query Membuat DataBase dan Tabel Yang Berelasi
+
+### Data Base
+```sql
+CREATE DATABASE sekolah;
+USE sekolah
+```
+
+### Tabel siswa
+```sql
+CREATE TABLE siswa (
+id_siswa INT AUTO_INCREMENT PRIMARY KEY,
+nama VARCHAR(100) NOT NULL,
+kelas VARCHAR(10) NOT NULL,
+jurusan VARCHAR(50) NOT NULL,
+tanggal_lahir DATE NOT NULL,
+jenis_kelamin ENUM('Laki-Laki', 'Perempuan') NOT NULL
+);
+```
+
+### Tabel Prestasi
+```sql
+CREATE TABLE prestasi (
+id_prestasi INT AUTO_INCREMENT PRIMARY KEY,
+id_siswa INT NOT NULL,
+id_kegiatan INT NOT NULL,
+nama_prestasi VARCHAR(100) NOT NULL,
+tingkat ENUM('Sekolah', 'Kabupaten', 'Provinsi', 'Nasional','Internasional') NOT NULL,
+peringkat INT NOT NULL,
+tanggal_prestasi DATE NOT NULL,
+FOREIGN KEY (id_siswa) REFERENCES siswa(id_siswa) ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (id_kegiatan) REFERENCES kegiatan(id_kegiatan) ON DELETE CASCADE ON UPDATE CASCADE
+);
+```
+
+```sql
+CREATE TABLE kegiatan (
+id_kegiatan INT AUTO_INCREMENT PRIMARY KEY,
+nama_kegiatan VARCHAR(100) NOT NULL,
+penyelenggara VARCHAR(100) NOT NULL,
+tanggal_kegiatan DATE NOT NULL
+);
+```
 ## Relasi Data base
 ![500](asetujian/4.png)
 
@@ -9,7 +69,19 @@
 ### Query 1
 #### Code
 ```sql
-SELECT s.jenis_kelamin AS jenis_kelamin,COUNT(p.id_prestasi) AS total_prestasi_provinsi FROM siswa s JOIN prestasi p ON s.id_siswa = p.id_siswa WHERE p.tingkat = 'provinsi' GROUP BY s.jenis_kelamin HAVING COUNT(p.id_prestasi) > 0;
+SELECT
+s.jenis_kelamin AS jenis_kelamin,
+COUNT(p.id_prestasi) AS total_prestasi_provinsi
+FROM
+siswa s
+JOIN
+prestasi p ON s.id_siswa = p.id_siswa
+WHERE
+p.tingkat = 'provinsi'
+GROUP BY
+s.jenis_kelamin
+HAVING
+COUNT(p.id_prestasi) > 0;
 ```
 #### Hasil
 ![](asetujian/3.png)
