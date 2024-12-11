@@ -1,13 +1,13 @@
 # Ujian
 
 ## Tabel Keaktifan
-| No  | Nama   | Skor keaktifan | Peran                                 |
-| --- | ------ | -------------- | ------------------------------------- |
-| 1   | Fatir  | 3              | Mengerjakan Materi dan Mencari Materi |
-| 2   | Farhan | 3              | Mencari Materi                        |
-| 3   | Daud   | 3              | Mencari Materi                        |
-| 4   | Nabil  | 3              | Mencari Materi                        |
-| 5   | Afdal  | 0              | Tidak Mengerjakan                     |
+| No  | Nama   | Skor keaktifan | Peran             |
+| --- | ------ | -------------- | ----------------- |
+| 1   | Fatir  | 3              | Membuat ERD       |
+| 2   | Farhan | 3              | Mencari query 1   |
+| 3   | Daud   | 3              | Mencari query 2   |
+| 4   | Nabil  | 3              | Membuat tabel     |
+| 5   | Afdal  | 0              | Tidak Mengerjakan |
 
 ## Soal 
 1. Setiap kelompok merancang database di MySQL dari hasil perencanaan ERD-nya masing-masing. Di dalam database tersebut wajib menjadikan tabel berelasi, dengan menambah foreign key. 
@@ -16,12 +16,20 @@
 
 ## Jawab
 
+## ERD
+![](ASET/ERD_prestasi.png)
+### Penjelasan ERD
+
+- **Siswa ↔ Prestasi**:
+    - Relasi ini menunjukkan bahwa banyak siswa dapat memiliki banyak prestasi (M:M), dan banyak prestasi terkait dengan banyak siswa.
+- **Prestasi ↔ Kegiatan**:
+    - Relasi ini menunjukkan bahwa banyak prestasi dikaitkan dengan banyak kegiatan, dan banyak kegiatan bisa menghasilkan banyak prestasi (M:M).
 ## Query Membuat DataBase dan Tabel Yang Berelasi
 
 ### Data Base
 ```sql
 CREATE DATABASE sekolah;
-USE sekolah
+USE sekolah;
 ```
 
 ### Tabel siswa
@@ -50,7 +58,7 @@ FOREIGN KEY (id_siswa) REFERENCES siswa(id_siswa) ON DELETE CASCADE ON UPDATE CA
 FOREIGN KEY (id_kegiatan) REFERENCES kegiatan(id_kegiatan) ON DELETE CASCADE ON UPDATE CASCADE
 );
 ```
-
+### Tabel Kegiatan
 ```sql
 CREATE TABLE kegiatan (
 id_kegiatan INT AUTO_INCREMENT PRIMARY KEY,
@@ -61,12 +69,34 @@ tanggal_kegiatan DATE NOT NULL
 ```
 ## Relasi Data base
 ![500](asetujian/4.png)
+### Penjelasan
+- **Tabel `siswa`** berisi data pribadi siswa yang berfungsi sebagai referensi untuk data prestasi.
+- **Tabel `kegiatan`** menyimpan data kegiatan yang menjadi konteks untuk prestasi tertentu.
+- **Tabel `prestasi`** menjadi tabel penghubung, mengintegrasikan informasi dari siswa dan kegiatan, serta mencatat detail prestasi seperti nama, tingkat, dan peringkat.
+### Relasi Antar Tabel Many-to-Many
+1. Tabel siswa dengan prestasi
+    - Banyak siswa  dapat memiliki banyak pr estasi begitu pula sebaliknya banyak prestasi memiliki banyak siswa
 
+2. Tabel kegiatan dengan prestasi
+    - Banyak kegiatan dapat memiliki banyak prestasi begitu pula sebaliknya banyak prestasi memiliki banyak kegiatan
 ## Isi Data base
-![](asetujian/1.png)
+![](asetujian/6.png)
 
 ## 2 Contoh dengan menggunakan query relasi, group by, dan having secara bersamaan dalam satu query
 ### Query 1
+tujuan : Menghitung berapa banyak prestasi tingkat **provinsi** yang diraih siswa, dibedakan berdasarkan **jenis kelamin**. Hasilnya hanya akan menampilkan jenis kelamin yang punya **minimal satu prestasi**.
+
+cara relasi : menggunakan query  **`JOIN siswa s ON s.id_siswa = p.id_siswa`**: Menghubungkan tabel `siswa` dan `prestasi` berdasarkan kolom `id_siswa`.
+
+cara agregasi : pertama kita harus memfilter data  
+    `WHERE p.tingkat = 'provinsi'`  Hanya data prestasi tingkat _provinsi_ yang diproses.
+- menghitung jumlah prestasi  
+    `COUNT(p.id_prestasi)`  Menghitung jumlah prestasi untuk setiap kelompok jenis kelamin.
+- **Kelompokkan Data:**  
+    `GROUP BY s.jenis_kelamin`  Data dikelompokkan berdasarkan jenis kelamin siswa.
+- **Tampilkan Kelompok dengan Prestasi:**  
+    `HAVING COUNT(p.id_prestasi) > 0`  Hanya kelompok dengan jumlah prestasi > 0 yang ditampilkan.
+
 #### Code
 ```sql
 SELECT
@@ -90,7 +120,7 @@ COUNT(p.id_prestasi) > 0;
 ##### Penjelasan
 - `s.jenis_kelamin`: Memilih kolom `jenis_kelamin` dari tabel `siswa` (berarti kita ingin mengelompokkan data berdasarkan jenis kelamin).
 -  `AS jenis_kelamin` Membuat tabel alias jenis_kelamin
-- `COUNT(p.id_prestasi)`: Menghitung jumlah baris pada kolom `id_prestasi` di tabel `prestasi`. Hasilnya diberi alias `total_prestasi_internasional`.
+- `COUNT(p.id_prestasi)`: Menghitung jumlah baris pada kolom `id_prestasi` di tabel `prestasi`. Hasilnya diberi alias `total_prestasi_provinsi`.
 - `AS total_prestasi_provinsi` Membuat tabel alias 
 - Menggabungkan tabel `siswa` (alias `s`) dengan tabel `prestasi` (alias `p`) berdasarkan relasi `s.id_siswa = p.id_siswa`.
 - Artinya, kita ingin menghubungkan data siswa dengan prestasi yang mereka raih.
@@ -98,31 +128,32 @@ COUNT(p.id_prestasi) > 0;
 - `GROUP BY s.jenis_kelamin`Mengelompokkan data berdasarkan kolom `jenis_kelamin`.
 - `HAVING COUNT(p.id_prestasi) > 0`Memfilter grup yang memiliki jumlah prestasi lebih dari 0.
 ##### Analisis
-###### 1. **Tujuan Query**
 
-- Query ini menghitung jumlah prestasi tingkat **provinsi** yang diraih oleh siswa berdasarkan **jenis kelamin**.
-- Hanya jenis kelamin yang memiliki **setidaknya satu prestasi** yang akan ditampilkan.
-
-###### 2. **Keluaran Query**
+###### 1. **Hasil Yang akan di tampilkan**
 
 - Terdapat dua kolom dalam hasil:
     - **`jenis_kelamin`**: Menunjukkan jenis kelamin siswa (misalnya, `'Laki-Laki'` atau `'Perempuan'`).
-    - **`total_prestasi_internasional`**: Menunjukkan jumlah prestasi tingkat provinsi yang diraih oleh siswa dengan jenis kelamin tersebut.
+    - **`total_prestasi_provinsi`**: Menunjukkan jumlah prestasi tingkat provinsi yang diraih oleh siswa dengan jenis kelamin tersebut.
 
-###### 3. **Efisiensi Query**
+###### 2. **Efisiensi Query**
+- Query cukup efisien untuk database yang tidak terlalu besar.
 
-- Query cukup efisien untuk dataset yang tidak terlalu besar.
-- Namun, jika tabel `prestasi` atau `siswa` memiliki banyak data, menambahkan **index** pada kolom `id_siswa` dan `tingkat` dapat meningkatkan performa.
 
-###### 4. **Potensi Kesalahan**
-
-- Jika ada siswa yang tidak memiliki data prestasi sama sekali, mereka akan terabaikan karena JOIN bersifat **INNER JOIN**. Jika semua siswa perlu dimasukkan, maka gunakan **LEFT JOIN**.
-
-###### 5. **Optimisasi Potensial**
-
-- Jika hanya memerlukan data jenis kelamin dan jumlah, bisa menggunakan subquery untuk memfilter data tingkat `provinsi` terlebih dahulu, agar lebih mudah dikelola pada dataset besar.
 
 ### Query 2
+
+tujuan: menghitung jumlah prestasi yang diraih oleh siswa dari setiap **jurusan**. Hasilnya hanya akan menampilkan jurusan yang punya **minimal 3 prestasi**.
+
+cara relasi: menggunakan query `JOIN prestasi p ON s.id_siswa = p.id_siswa` menghubungkan tabel siswa dan tabel prestasi berdasarkan kolom `id_siswa`
+
+cara agregasi: 1. **Pengelompokan Data (`GROUP BY`):**  
+    Data akan dikelompokkan berdasarkan kolom `jurusan` dari tabel `siswa`.
+2. **Menghitung Prestasi (`COUNT`):**  
+    `COUNT(p.id_prestasi)` menghitung jumlah prestasi untuk setiap jurusan.
+    
+3. **Filter Hasil (`HAVING`):**  
+    Hanya menampilkan jurusan yang memiliki **minimal 3 prestasi**.
+    
 #### Code
 ```sql
 SELECT 
@@ -164,17 +195,6 @@ HAVING
 
 ###### 3. **Efisiensi Query**
 
-- Query ini cukup efisien untuk dataset menengah.
-- Jika tabel `prestasi` atau `siswa` sangat besar, menambahkan **index** pada kolom yang digunakan untuk JOIN (`id_siswa`) dapat meningkatkan performa.
+- Query ini cukup efisien untuk database yang tidak terlalu besar.
 
-###### 4. **Keterbatasan**:
 
-- **INNER JOIN**: Hanya siswa yang memiliki data di tabel `prestasi` yang akan dihitung. Siswa tanpa prestasi tidak akan masuk hitungan.
-- Jika ingin menyertakan semua jurusan (meskipun prestasinya kurang dari 3), gunakan **LEFT JOIN** dan ubah filter dalam HAVING seperti:
-```sql
-HAVING COUNT(p.id_prestasi) >= 3
-```
-
-###### 5. **Optimisasi Potensial**
-
-- Jika kita tahu bahwa dataset sangat besar, filtering pada tahap awal dengan **WHERE** dapat membantu, misalnya memfilter data prestasi yang relevan.
