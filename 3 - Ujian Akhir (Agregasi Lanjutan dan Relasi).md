@@ -17,7 +17,7 @@
 ## Jawab
 
 ## ERD
-![](ASET/ERD_prestasi.png)
+![](asetujian/ERD_prestasi.png)
 ### Penjelasan ERD
 
 - **Siswa ↔ Prestasi**:
