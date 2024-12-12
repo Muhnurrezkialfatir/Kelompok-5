@@ -131,7 +131,7 @@ CREATE TABLE jurusan (
     nama_jurusan VARCHAR(100) NOT NULL
 );
 ```
-## Relasi Data base
+## Relasi Database
 ![500](asetujian/11.png)
 ### Penjelasan
 - **Tabel `siswa`** berisi data pribadi siswa yang berfungsi sebagai referensi untuk data prestasi.
@@ -148,11 +148,11 @@ CREATE TABLE jurusan (
 - Relasi antara entitas `siswa` dan `jurusan` adalah **Many-to-One (M:1)**.
     - Banyak siswa bisa berada dalam satu jurusan, tetapi satu siswa hanya bisa berada dalam satu jurusan.  
         Hal ini terlihat dari atribut `id_jurusan` di entitas `siswa`, yang menjadi _foreign key_ ke entitas `jurusan`.
-## Isi Data base
+## Isi Database
 ![](asetujian/20.png)
 
 ![](asetujian/19.png)
-## 2 Contoh dengan menggunakan query relasi, group by, dan having secara bersamaan dalam satu query
+## 3 Contoh dengan menggunakan query relasi, group by, dan having secara bersamaan dalam satu query
 ### Query 1
 tujuan : Menghitung berapa banyak prestasi tingkat **provinsi** yang diraih siswa, dibedakan berdasarkan **jenis kelamin**. Hasilnya hanya akan menampilkan jenis kelamin yang punya **minimal satu prestasi**.
 
@@ -165,7 +165,7 @@ cara agregasi : pertama kita harus memfilter data
 - **Kelompokkan Data:**  
     `GROUP BY s.jenis_kelamin`  Data dikelompokkan berdasarkan jenis kelamin siswa.
 - **Tampilkan Kelompok dengan Prestasi:**  
-    `HAVING COUNT(p.id_prestasi) > 0`  Hanya kelompok dengan jumlah prestasi > 0 yang ditampilkan.
+    `HAVING COUNT(p.id_prestasi) > 1`  Hanya kelompok dengan jumlah prestasi > 1 yang ditampilkan.
 
 #### Code
 ```sql
@@ -181,10 +181,10 @@ p.tingkat = 'provinsi'
 GROUP BY
 s.jenis_kelamin
 HAVING
-COUNT(p.id_prestasi) > 0;
+COUNT(p.id_prestasi) > 1;
 ```
 #### Hasil
-![](asetujian/16.png)
+![](asetujian/22.png)
 
 #### Penjelasan dan Analisis
 
@@ -196,19 +196,17 @@ COUNT(p.id_prestasi) > 0;
 - Artinya, kita ingin menghubungkan data siswa dengan prestasi yang mereka raih.
 - `WHERE p.tingkat = 'provinsi'`Memfilter data agar hanya memasukkan prestasi dengan tingkat `'provinsi'`.
 - `GROUP BY s.jenis_kelamin`Mengelompokkan data berdasarkan kolom `jenis_kelamin`.
-- `HAVING COUNT(p.id_prestasi) > 0`Memfilter grup yang memiliki jumlah prestasi lebih dari 0.
-
-
-
-
+- `HAVING COUNT(p.id_prestasi) > 1`Memfilter grup yang memiliki jumlah prestasi lebih dari 1.
 ### Query 2
 
 tujuan: menghitung jumlah prestasi yang diraih oleh siswa dari setiap **jurusan**. Hasilnya hanya akan menampilkan jurusan yang punya **minimal 3 prestasi**.
 
-cara relasi: menggunakan query `JOIN prestasi p ON s.id_siswa = p.id_siswa` menghubungkan tabel siswa dan tabel prestasi berdasarkan kolom `id_siswa`
+cara relasi: menggunakan query `JOIN prestasi p ON s.id_siswa = p.id_siswa` 
+menghubungkan tabel siswa dan tabel prestasi berdasarkan kolom `id_siswa`,`JOIN jurusan j ON s.id_jurusan = j.id_jurusan` menghubungkan tabel siswa dan tabel jurusan berdasarkan kolom `id_jurusan`
 
-cara agregasi: 1. **Pengelompokan Data (`GROUP BY`):**  
-    Data akan dikelompokkan berdasarkan kolom `jurusan` dari tabel `siswa`.
+cara agregasi: 
+1. **Pengelompokan Data (`GROUP BY`):**  
+    Data digabungkan dalam grup berdasarkan kolom `nama_jurusan`.
 2. **Menghitung Prestasi (`COUNT`):**  
     `COUNT(p.id_prestasi)` menghitung jumlah prestasi untuk setiap jurusan.
     
@@ -218,33 +216,31 @@ cara agregasi: 1. **Pengelompokan Data (`GROUP BY`):**
 #### Code
 ```sql
 SELECT 
-    s.id_jurusan AS jurusan,
+    j.nama_jurusan AS jurusan,
     COUNT(p.id_prestasi) AS total_prestasi
 FROM 
     siswa s
 JOIN 
     prestasi p ON s.id_siswa = p.id_siswa
+JOIN 
+    jurusan j ON s.id_jurusan = j.id_jurusan
 GROUP BY 
-    s.id_jurusan
+    j.nama_jurusan
 HAVING 
     COUNT(p.id_prestasi) >= 3;
 
 ```
 #### Hasil
-![](asetujian/18.png)
+![](asetujian/23.png)
 
 #### Penjelasan dan Analisis
-
-- `SELECT s.id_jurusan`: Mengambil kolom `jurusan` dari tabel `siswa`. Artinya, kita ingin menampilkan data berdasarkan jurusan.
-- `AS jurusan Membuat tabel alias 
-- `COUNT(p.id_prestasi)`: Menghitung jumlah data di kolom `id_prestasi` dari tabel `prestasi`. Alias hasilnya adalah `total_prestasi`.
--  `AS total_prestasi` Membuat tabel alias 
--  `FROM siswa s JOIN prestasi p ON s.id_siswa = p.id_siswa`Melakukan **INNER JOIN** antara tabel `siswa` (alias `s`) dengan tabel `prestasi` (alias `p`) berdasarkan relasi `s.id_siswa = p.id_siswa`.
-- Tujuan JOIN ini adalah untuk menghubungkan data siswa dengan prestasi yang mereka raih.
-- `GROUP BY s.id_jurusan` Mengelompokkan data berdasarkan kolom `jurusan`. Dengan ini, semua siswa yang memiliki jurusan sama akan dikelompokkan untuk dihitung jumlah prestasinya.
-- `HAVING COUNT(p.id_prestasi) >= 3` Memfilter hanya kelompok jurusan yang memiliki setidaknya **3 prestasi** Atau sama dengan 3 **prestasi**.
-
-
+-  `j.nama_jurusan AS jurusan`: Mengambil nama jurusan dari tabel `jurusan` dan memberi alias `jurusan`.
+- `COUNT(p.id_prestasi) AS total_prestasi`: Menghitung jumlah baris di tabel `prestasi` yang berhubungan dengan masing-masing jurusan dan memberi alias `total_prestasi`.
+-  `FROM siswa s`: Menjadikan tabel `siswa` sebagai tabel utama dengan alias `s`.
+- `JOIN prestasi p ON s.id_siswa = p.id_siswa`: Menggabungkan tabel `siswa` dengan tabel `prestasi` berdasarkan kolom `id_siswa`, sehingga hanya siswa yang memiliki prestasi akan diambil.
+- `JOIN jurusan j ON s.id_jurusan = j.id_jurusan`: Menggabungkan tabel `siswa` dengan tabel `jurusan` berdasarkan kolom `id_jurusan`, sehingga setiap siswa dihubungkan dengan nama jurusannya.
+- `GROUP BY j.nama_jurusan` Bagian ini mengelompokkan data berdasarkan `nama_jurusan`. Setiap grup mewakili satu jurusan, sehingga perhitungan `COUNT(p.id_prestasi)` dilakukan untuk setiap jurusan.
+- `HAVING COUNT(p.id_prestasi) >= 3` Bagian ini memfilter hasil setelah pengelompokan. Hanya grup (jurusan) yang memiliki jumlah prestasi (`COUNT(p.id_prestasi)`) **3 atau lebih** yang akan ditampilkan.
 
 ### Query 3
 
@@ -299,6 +295,38 @@ total_prestasi DESC;
         - **`WHEN`**: Jika waktu masuk sekolah lebih dari 12 tahun yang lalu, statusnya "LULUS".
         - **`ELSE`**: Jika belum 12 tahun, status berupa kelas saat ini (contohnya "kelas 11").
     - Alias untuk hasil logika adalah **`AS status_kelas`**.
+
+
+    - `TIMESTAMPDIFF(YEAR, s.tanggal_masuk_sekolah, CURDATE())` digunakan untuk menghitung **jumlah tahun** antara `tanggal_masuk_sekolah` dan **tanggal saat ini `(CURDATE)`**.
+    - Misalnya, jika `tanggal_masuk_sekolah` adalah `2020-07-01`, dan hari ini adalah `2024-12-12`, maka:
+    - `TIMESTAMPDIFF(YEAR, '2020-07-01', '2024-12-12') = 4` (karena perbedaan tahun penuh).
+    - **`WHEN > 12 THEN 'LULUS'`**: Menangkap kondisi ketika totalnya lebih dari 12 (sudah melewati kelas 12).
+    - **`WHEN = 10` hingga `WHEN = 12`**: Menentukan siswa berada di kelas 10, 11, atau 12.
+    - **`ELSE`**: Sebagai default, jika `tanggal_masuk_sekolah` berada di masa depan atau kondisi tidak valid.
+
+    - **Mengasumsikan Kelas Awal (Kelas 10)**  
+     Dalam query ini, diasumsikan bahwa siswa mulai dari kelas 10 ketika mereka masuk sekolah. Oleh karena itu, nilai dasar `10` ditambahkan ke hasil selisih tahun:
+     ```sql
+     10 + TIMESTAMPDIFF(YEAR, s.tanggal_masuk_sekolah, CURDATE())
+
+      ```
+      Contohnya:
+
+    - Jika siswa sudah sekolah selama 1 tahun, maka hasilnya adalah `10 + 1 = 11` (kelas 11).
+    - Jika siswa sudah sekolah selama 2 tahun, maka hasilnya adalah `10 + 2 = 12` (kelas 12).
+
+    - **Logika `WHEN... THEN... ELSE`**
+
+    - Kondisi `WHEN` memeriksa apakah hasil perhitungan lebih dari `12`. Jika iya, dianggap siswa sudah lulus:
+```sql
+WHEN (10 + TIMESTAMPDIFF(YEAR, s.tanggal_masuk_sekolah, CURDATE())) > 12 THEN 'LULUS'
+```
+
+- Jika tidak, maka hasilnya adalah teks yang menunjukkan kelas siswa, misalnya "Kelas 10", "Kelas 11", atau "Kelas 12":
+```sql
+ELSE CONCAT('Kelas ', 10 + TIMESTAMPDIFF(YEAR, s.tanggal_masuk_sekolah, CURDATE()))
+```
+
 - **`FROM siswa s`**:
     
     - Menentukan tabel `siswa` sebagai sumber data utama dengan alias **`s`**.
