@@ -6,7 +6,7 @@
 | 1   | Fatir  | 3              | Membuat ERD       |
 | 2   | Farhan | 3              | Mencari query 1   |
 | 3   | Daud   | 3              | Mencari query 2   |
-| 4   | Nabil  | 3              | Membuat tabel     |
+| 4   | Nabil  | 3              | Membuat Database  |
 | 5   | Afdal  | 0              | Tidak Mengerjakan |
 
 ## Soal 

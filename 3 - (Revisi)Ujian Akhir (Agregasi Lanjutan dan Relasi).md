@@ -258,7 +258,7 @@ cara relasi:**`LEFT JOIN`**:
 cara agregasi: 
 - Agregasi dilakukan menggunakan fungsi **COUNT** untuk menghitung jumlah prestasi per siswa `COUNT(p.id_prestasi) AS total_prestasi`Fungsi **COUNT** menghitung jumlah baris pada tabel `prestasi` yang memiliki relasi dengan `id_siswa`.
 - menggunakan **GROUP BY** untuk mengelompokkan hasil berdasarkan setiap siswa`GROUP BY s.id_siswa, s.nama` **`GROUP BY`** memastikan bahwa hasil dihitung per siswa.
-- memfilter hasil `HAVING total_prestasi > 0` Menampilkan hanya siswa yang memiliki setidaknya satu prestasi.
+- memfilter hasil `HAVING total_prestasi > 1` Menampilkan hanya siswa yang memiliki setidaknya dua prestasi.
 - mengurutkan hassil `ORDER BY total_prestasi DESC` Mengurutkan hasil berdasarkan jumlah prestasi secara menurun.
 #### Code
 ```sql
@@ -309,9 +309,9 @@ total_prestasi DESC;
 - **`GROUP BY s.id_siswa, s.nama`**:
     
     - Mengelompokkan data berdasarkan `id_siswa` dan `nama` untuk menghitung jumlah prestasi per siswa.
-- **`HAVING total_prestasi > 0`**:
+- **`HAVING total_prestasi > 1`**:
     
-    - Memfilter hasil agar hanya menampilkan siswa yang memiliki setidaknya **1 prestasi**.
+    - Memfilter hasil agar hanya menampilkan siswa yang memiliki setidaknya **2 prestasi**.
 - **`ORDER BY total_prestasi DESC`**:
     
     - Mengurutkan hasil berdasarkan jumlah prestasi secara menurun (siswa dengan prestasi terbanyak ditampilkan di atas).
